@@ -1,3 +1,6 @@
+.DS_Store
+*.lock
+
 *.gem
 *.rbc
 /.config
