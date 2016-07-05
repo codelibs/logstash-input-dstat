@@ -31,8 +31,10 @@ output {
 
 * option
     * option for dstat
+    * default: empty
 * interval
-    * interval for executing dstat
+    * interval for executing dstat (seconds)
+    * default: 30
 * stat_hash
     * set custom stat mapping
 
