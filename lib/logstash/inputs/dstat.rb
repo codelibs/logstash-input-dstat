@@ -16,6 +16,19 @@ class LogStash::Inputs::Dstat < LogStash::Inputs::Base
 
   config :tmpfile, :validate => :string, :default => "/tmp/logstash-dstat.csv"
 
+  config :stat_hash, :validate => :hash, :default => {
+    'load avg' => {'1m' => 'loadavg-short', '5m' => 'loadavg-middle', '15m' => 'loadavg-long'},
+    'total cpu usage' => {'usr' => 'cpu-usr', 'sys' => 'cpu-sys', 'idl' => 'cpu-idl', 'wai' => 'cpu-wai', 'hiq' => 'cpu-hiq', 'siq' => 'cpu-siq'},
+    'net/total' => {'recv' => 'net-recv', 'send' => 'net-send'},
+    '/' => {'used' => 'disk-used', 'free' => 'disk-free'},
+    'memory usage' => {'used' => 'mem-used', 'buff' => 'mem-buff', 'cach' => 'mem-cach', 'free' => 'mem-free'},
+    'dsk/total' => {'read' => 'dsk-read', 'writ' => 'dsk-writ'},
+    'paging' => {'in' => 'paging-in', 'out' => 'paging-out'},
+    'system' => {'int' => 'sys-int', 'csw' => 'sys-csw'},
+    'swap' => {'used' => 'swap-used', 'free' => 'swap-free'},
+    'procs' => {'run' => 'procs-run', 'blk' => 'procs-blk', 'new' => 'procs-new'}
+  }
+
   public
   def register
     @logger.info("Registering Dstat Input", :type => @type, :command => @option, :interval => @interval)
@@ -94,18 +107,6 @@ class LogStash::Inputs::Dstat < LogStash::Inputs::Base
   end
 
   def resolve_stat(top_column, second_column)
-    stat_map = {}
-    stat_map['load avg'] = {'1m' => 'loadavg-short', '5m' => 'loadavg-middle', '15m' => 'loadavg-long'}
-    stat_map['total cpu usage'] = {'usr' => 'cpu-usr', 'sys' => 'cpu-sys', 'idl' => 'cpu-idl', 'wai' => 'cpu-wai', 'hiq' => 'cpu-hiq', 'siq' => 'cpu-siq'}
-    stat_map['net/total'] = {'recv' => 'net-recv', 'send' => 'net-send'}
-    stat_map['/'] = {'used' => 'disk-used', 'free' => 'disk-free'}
-    stat_map['memory usage'] = {'used' => 'mem-used', 'buff' => 'mem-buff', 'cach' => 'mem-cach', 'free' => 'mem-free'}
-    stat_map['dsk/total'] = {'read' => 'dsk-read', 'writ' => 'dsk-writ'}
-    stat_map['paging'] = {'in' => 'paging-in', 'out' => 'paging-out'}
-    stat_map['system'] = {'int' => 'sys-int', 'csw' => 'sys-csw'}
-    stat_map['swap'] = {'used' => 'swap-used', 'free' => 'swap-free'}
-    stat_map['procs'] = {'run' => 'procs-run', 'blk' => 'procs-blk', 'new' => 'procs-new'}
-
-    stat_map[top_column] ? stat_map[top_column][second_column] : nil
+    @stat_hash[top_column] ? @stat_hash[top_column][second_column] : nil
   end
 end
