@@ -37,6 +37,7 @@ output {
     * default: 30
 * stat_hash
     * set custom stat mapping
+    * ex.) stat_hash => {'total cpu usage' => {'usr' => 'hogehoge' 'sys' => 'fugafuga'}}
 
 ### default stat mapping
 
