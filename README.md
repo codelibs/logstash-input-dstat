@@ -65,41 +65,41 @@ Output example of when using logstash-output-elasticsearch.
 curl -XGET localhost:9200/logstash-*/_search
 
 {
-  took: 32,
-  timed_out: false,
-  _shards: {
-    total: 3,
-    successful: 3,
-    failed: 0
+  "took": 32,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "failed": 0
   },
-  hits: {
-    total: 2,
-    max_score: 3.2686834,
-    hits: [
+  "hits": {
+    "total": 2,
+    "max_score": 3.2686834,
+    "hits": [
       {
-        _index: "logstash-2016.07.06",
-        _type: "logs",
-        _id: "AVW-_erHoa7OXPDibi4W",
-        _score: 3.2686834,
-        _source: {
-          stat: "cpu-usr",
-          value: "73.810",
-          host: "localhost.localdomain",
-          @version: "1",
-          @timestamp: "2016-07-06T06:55:58.890Z"
+        "_index": "logstash-2016.07.06",
+        "_type": "logs",
+        "_id": "AVW-_erHoa7OXPDibi4W",
+        "_score": 3.2686834,
+        "_source": {
+          "stat": "cpu-usr",
+          "value": "73.810",
+          "host": "localhost.localdomain",
+          "@version": "1",
+          "@timestamp": "2016-07-06T06:55:58.890Z"
         }
       },
       {
-        _index: "logstash-2016.07.06",
-        _type: "logs",
-        _id: "AVW-_hX2oa7OXPDibi4c",
-        _score: 3.2686834,
-        _source: {
-          stat: "cpu-usr",
-          value: "0.0",
-          host: "localhost.localdomain",
-          @version: "1",
-          @timestamp: "2016-07-06T06:56:09.950Z"
+        "_index": "logstash-2016.07.06",
+        "_type": "logs",
+        "_id": "AVW-_hX2oa7OXPDibi4c",
+        "_score": 3.2686834,
+        "_source": {
+          "stat": "cpu-usr",
+          "value": "0.0",
+          "host": "localhost.localdomain",
+          "@version": "1",
+          "@timestamp": "2016-07-06T06:56:09.950Z"
         }
       }
     ]
