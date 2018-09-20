@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
-  s.name = 'logstash-input-dstat'
-  s.version         = '2.0.1'
-  s.licenses = ['Apache License (2.0)']
-  s.summary = "This example input streams a string at a definable interval."
-  s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
-  s.authors = ["yfujita"]
-  s.email = 'yfujita@n2sm.net'
-  s.homepage = ""
-  s.require_paths = ["lib"]
+  s.name          = 'logstash-input-dstat'
+  s.version       = '0.1.0'
+  s.licenses      = ['Apache-2.0']
+  s.summary       = 'TODO: Write a short summary, because Rubygems requires one.'
+  s.description   = '{TODO: Write a longer description or delete this line.'
+  s.homepage      = 'TODO: Put your plugin''s website or public repo URL here.'
+  s.authors       = ['']
+  s.email         = ''
+  s.require_paths = ['lib']
 
   # Files
   s.files = Dir['lib/**/*','spec/**/*','vendor/**/*','*.gemspec','*.md','CONTRIBUTORS','Gemfile','LICENSE','NOTICE.TXT']
@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.metadata = { "logstash_plugin" => "true", "logstash_group" => "input" }
 
   # Gem dependencies
-  s.add_runtime_dependency "logstash-core", ">= 2.0.0", "< 3.0.0"
+  s.add_runtime_dependency "logstash-core-plugin-api", "~> 2.0"
   s.add_runtime_dependency 'logstash-codec-plain'
   s.add_runtime_dependency 'stud', '>= 0.0.22'
-  s.add_development_dependency 'logstash-devutils'
+  s.add_development_dependency 'logstash-devutils', '>= 0.0.16'
 end

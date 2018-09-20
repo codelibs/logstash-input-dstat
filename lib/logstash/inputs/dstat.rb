@@ -1,9 +1,12 @@
 # encoding: utf-8
 require "logstash/inputs/base"
-require "logstash/namespace"
 require "stud/interval"
-require "socket"
+require "socket" # for Socket.gethostname
 require 'csv'
+
+# Generate a repeating message.
+#
+# This plugin is intented only as an example.
 
 class LogStash::Inputs::Dstat < LogStash::Inputs::Base
   config_name "dstat"
@@ -34,7 +37,7 @@ class LogStash::Inputs::Dstat < LogStash::Inputs::Base
     @logger.info("Registering Dstat Input", :type => @type, :command => @option, :interval => @interval)
     @host = Socket.gethostname
     @command = 'dstat ' + option + ' --output ' + @tmpfile + ' 1 1'
-  end
+  end # def register
 
   def run(queue)
     while !stop?
@@ -109,4 +112,4 @@ class LogStash::Inputs::Dstat < LogStash::Inputs::Base
   def resolve_stat(top_column, second_column)
     @stat_hash[top_column] ? @stat_hash[top_column][second_column] : nil
   end
-end
+end # class LogStash::Inputs::Dstat
