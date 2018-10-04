@@ -2,9 +2,9 @@ Gem::Specification.new do |s|
   s.name          = 'logstash-input-dstat'
   s.version       = '0.1.0'
   s.licenses      = ['Apache-2.0']
-  s.summary       = 'TODO: Write a short summary, because Rubygems requires one.'
-  s.description   = '{TODO: Write a longer description or delete this line.'
-  s.homepage      = 'TODO: Put your plugin''s website or public repo URL here.'
+  s.summary       = 'Write a short summary, because Rubygems requires one.'
+  s.description   = 'Write a longer description or delete this line.'
+  s.homepage      = 'http://localhost'
   s.authors       = ['']
   s.email         = ''
   s.require_paths = ['lib']
